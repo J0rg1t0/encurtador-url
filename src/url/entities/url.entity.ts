@@ -1,6 +1,7 @@
-import { BaseEntity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-export class Url extends BaseEntity{
+@Entity()
+export class Url{
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -11,16 +12,19 @@ export class Url extends BaseEntity{
     @Column({ type: 'varchar', length: 6, unique: true })
     shortUrl: string;
 
+    @Column({ type: 'int', default: null })
+    userId: number;
+
     @Column({ type: 'int', default: 0 })
     clickCount: number;
 
-    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+    @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
     createdAt: Date;
 
-    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+    @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
     updatedAt: Date;
 
-    @Column({ type: 'timestamp', nullable: true })
+    @Column({ type: 'datetime', nullable: true })
     deletedAt: Date;
     
 }

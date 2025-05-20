@@ -2,11 +2,13 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { UrlService } from './url.service';
 import { CreateUrlDto } from './dto/create-url.dto';
 import { UpdateUrlDto } from './dto/update-url.dto';
+import { Public } from 'src/auth/auth.guard';
 
 @Controller('url')
 export class UrlController {
   constructor(private readonly urlService: UrlService) {}
 
+  @Public()
   @Post()
   create(@Body() createUrlDto: CreateUrlDto) {
     return this.urlService.create(createUrlDto);

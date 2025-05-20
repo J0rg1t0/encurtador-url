@@ -1,5 +1,5 @@
-import { BaseEntity, Column, CreateDateColumn, PrimaryGeneratedColumn } from "typeorm";
-
+import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+@Entity()
 export class User extends BaseEntity{
 
     @PrimaryGeneratedColumn()
@@ -11,6 +11,9 @@ export class User extends BaseEntity{
     @Column({ type: 'varchar', length: 50 })
     password: string;
 
-    @CreateDateColumn({ type: 'timestamp' })
+    @CreateDateColumn({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
     createdAt: Date;
+
+    @CreateDateColumn({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+    updatedAt: Date;
 }
