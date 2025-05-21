@@ -1,4 +1,4 @@
-export function generateRandomString(length = +process.env.SHORT_URL_LENGTH!): string {
+export function generateRandomString(length = 6): string {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
   

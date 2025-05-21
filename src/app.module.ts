@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth/auth.guard';
+import { OptionalAuthGuard } from './auth/optional-auth.guard';
 
 @Module({
   imports: [
@@ -25,6 +26,8 @@ import { AuthGuard } from './auth/auth.guard';
     {
       provide: APP_GUARD,
       useClass: AuthGuard,
-    }],
+    },
+  OptionalAuthGuard,
+],
 })
 export class AppModule {}
